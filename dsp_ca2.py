@@ -14,8 +14,7 @@ import subprocess
 # encrypt.py
 # openssl enc -aes-256-cbc -md sha512 -pbkdf2 -iter 1000 -salt -in message.txt -out encrypt.enc
 command = [
-    "openssl", "enc", "-aes-256-cbc", "-md", "sha512", "-pbkdf2", "-iter", "1000", "-salt",
-    "-in", "message.txt", "-out", "encrypt_1.enc"
+    "openssl", "enc", "-aes-256-cbc", "-md", "sha512", "-pbkdf2", "-iter", "1000", "-salt", "-in", "temp.txt", "-out", "encrypt_1.enc", "-k", "your_password"
 ]
 
 try:
@@ -31,8 +30,7 @@ import subprocess
 
 # openssl enc -aes-256-cbc -md sha512 -pbkdf2 -iter 1000 -salt -in encrypt.enc -out decrypt.txt -d
 command = [
-    "openssl", "enc", "-aes-256-cbc", "-md", "sha512", "-pbkdf2", "-iter", "1000", "-d",
-    "-in", "encrypt_1.enc", "-out", "decrypt_1.txt"
+    "openssl", "enc", "-aes-256-cbc", "-md", "sha512", "-pbkdf2", "-iter", "1000", "-d", "-in", "encrypt_1.enc", "-out", "decrypt_1.txt", "-k", "your_password"
 ]
 
 try:
@@ -130,7 +128,7 @@ try:
     print("Signature verification successful.")
 except subprocess.CalledProcessError as e:
     print(f"Signature verification failed: {e}")
-
+"""##Message Digest"""
 import subprocess
 
 # Command to generate a SHA-256 message digest for verification
@@ -145,7 +143,7 @@ try:
 except subprocess.CalledProcessError as e:
     print(f"An error occurred during digest verification: {e}")
 
-"""##Message Digest"""
+
 
 import subprocess
 
